@@ -1,6 +1,7 @@
 import "./App.css";
 import Counter from "./Counter";
 import ToDoList from "./ToDoList";
+import ToDoList2 from "./ToDoList2";
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
           <Counter />
         </div>
         <div className="col-4">
-          <ToDoList />
+          <ToDoList2 />
         </div>
         <div className="col-4"></div>
       </div>
