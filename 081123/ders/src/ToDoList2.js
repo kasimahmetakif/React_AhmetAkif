@@ -4,6 +4,7 @@ export default function ToDoList2() {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [couple, setCouple] = useState([]);
+  const [updateIndex, setUpdateIndex] = useState(null);
 
   const addCouple = () => {
     if (name && surname) {
@@ -13,8 +14,15 @@ export default function ToDoList2() {
     }
   };
 
-  const deleteTodo = (deletedIndex) => {
+  const deleteName = (deletedIndex) => {
     setCouple(couple.filter((element, index) => index !== deletedIndex));
+  };
+
+  const updateName = (index) => {
+    setUpdateIndex(index);
+    const nameToEdit = couple[index];
+    setName(nameToEdit.name);
+    setSurname(nameToEdit.surname);
   };
 
   return (
@@ -26,31 +34,36 @@ export default function ToDoList2() {
             {element.name} {element.surname}
             <button
               style={{ marginTop: "5px" }}
-              onClick={() => deleteTodo(index)}
+              onClick={() => deleteName(index)}
             >
               Sil
             </button>
+            <button
+              style={{ marginTop: "5px", marginLeft: "5px" }}
+              onClick={() => updateName(index)}
+            >
+              Güncelle
+            </button>
           </li>
         ))}
-        ;
-        <div className="ekle">
-          <input
-            onChange={(name) => setName(name.target.value)}
-            type="text"
-            placeholder="İsim yaz"
-            value={name}
-          />
-          <input
-            onChange={(surname) => setSurname(surname.target.value)}
-            type="text"
-            placeholder="Soyisim yaz"
-            value={surname}
-          />
-          <button style={{ marginTop: "5px" }} onClick={addCouple}>
-            Ekle
-          </button>
-        </div>
       </ul>
+      <div className="ekle">
+        <input
+          onChange={(e) => setName(e.target.value)}
+          type="text"
+          placeholder="İsim yaz"
+          value={name}
+        />
+        <input
+          onChange={(e) => setSurname(e.target.value)}
+          type="text"
+          placeholder="Soyisim yaz"
+          value={surname}
+        />
+        <button style={{ marginTop: "5px" }} onClick={addCouple}>
+          Ekle
+        </button>
+      </div>
     </div>
   );
 }
