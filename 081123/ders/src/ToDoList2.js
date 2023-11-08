@@ -27,27 +27,31 @@ export default function ToDoList2() {
 
   return (
     <div>
-      <h2>İsim Listesi</h2>
+      <h1 class="display-5">İsim Listesi</h1>
       <ul className="list-group">
         {couple.map((element, index) => (
-          <li key={index} className="list-group-item">
+          <li key={index} className="list-group-item list-group-item-action">
             {element.name} {element.surname}
             <button
               style={{ marginTop: "5px" }}
               onClick={() => deleteName(index)}
+              className="btn btn-danger"
             >
               Sil
             </button>
             <button
               style={{ marginTop: "5px", marginLeft: "5px" }}
               onClick={() => updateName(index)}
+              className="btn btn-warning"
             >
               Güncelle
             </button>
           </li>
         ))}
       </ul>
-      <div className="ekle">
+      <div className="input-group">
+        <span class="input-group-text">Ad ve soyad giriniz</span>
+
         <input
           onChange={(e) => setName(e.target.value)}
           type="text"
@@ -60,7 +64,7 @@ export default function ToDoList2() {
           placeholder="Soyisim yaz"
           value={surname}
         />
-        <button style={{ marginTop: "5px" }} onClick={addCouple}>
+        <button className="btn btn-info" onClick={addCouple}>
           Ekle
         </button>
       </div>
