@@ -10,8 +10,11 @@ export default function ToDoList2() {
       setCouple([...couple, { name, surname }]);
       setName("");
       setSurname("");
-      console.log(couple);
     }
+  };
+
+  const deleteTodo = (deletedIndex) => {
+    setCouple(couple.filter((element, index) => index !== deletedIndex));
   };
 
   return (
@@ -21,6 +24,12 @@ export default function ToDoList2() {
         {couple.map((element, index) => (
           <li key={index} className="list-group-item">
             {element.name} {element.surname}
+            <button
+              style={{ marginTop: "5px" }}
+              onClick={() => deleteTodo(index)}
+            >
+              Sil
+            </button>
           </li>
         ))}
         ;
@@ -39,9 +48,6 @@ export default function ToDoList2() {
           />
           <button style={{ marginTop: "5px" }} onClick={addCouple}>
             Ekle
-          </button>
-          <button style={{ marginTop: "5px" }} onClick={addCouple}>
-            Sil
           </button>
         </div>
       </ul>
