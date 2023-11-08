@@ -1,6 +1,6 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Counter from "./Counter";
+import ToDoList from "./ToDoList";
 
 function App() {
   return (
@@ -9,7 +9,9 @@ function App() {
         <div className="col-4">
           <Counter />
         </div>
-        <div className="col-4"></div>
+        <div className="col-4">
+          <ToDoList />
+        </div>
         <div className="col-4"></div>
       </div>
     </div>
